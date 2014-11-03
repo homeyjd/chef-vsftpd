@@ -1,8 +1,5 @@
 # encoding: utf-8
 
-# Include service definition now
-include_recipe 'vsftpd::_define_service'
-
 directory node['vsftpd']['config']['user_config_dir'] do
   action :create
   user 'root'
@@ -28,3 +25,6 @@ config = value_for_platform_family(
     notifies :restart, 'service[vsftpd]', :delayed
   end
 end
+
+# Include service definition now
+include_recipe 'vsftpd::_define_service'
